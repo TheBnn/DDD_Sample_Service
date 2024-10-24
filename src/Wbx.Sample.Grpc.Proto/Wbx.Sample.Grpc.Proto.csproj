@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
+		<Version>1.0.18-pre</Version>
+		<TargetFramework>net7.0</TargetFramework>
+		<Description>Grpc proto</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Entities\Enums.proto" />
+		<None Remove="Entities\Sample.proto" />
+		<None Remove="Services\annotations.proto" />
+		<None Remove="Services\EditResponse.proto" />
+		<None Remove="Services\http.proto" />
+		<None Remove="Services\SampleService.proto" />
+		<None Remove="google\api\httpbody.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Include Include="Models\dedbtor.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.20.1" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.46.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.46.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.46.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.21317.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Entities\Sample.proto" GrpcServices="None" />
+		<Protobuf Include="Entities\Enums.proto" GrpcServices="None" />
+		<Protobuf Include="google\api\annotations.proto" GrpcServices="None" />
+		<Protobuf Include="Services\EditResponse.proto" GrpcServices="None" /> 
+		
+		<Protobuf Include="Services\SampleService.proto" /> 
+		<Protobuf Include="google\api\httpbody.proto" GrpcServices="None" /> 
+		<Protobuf Include="google\api\http.proto" GrpcServices="None" /> 
+	</ItemGroup>
+
+</Project>

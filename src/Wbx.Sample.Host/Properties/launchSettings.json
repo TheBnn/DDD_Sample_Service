@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Wbx.Sample.Host": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55662;http://localhost:55663"
+    }
+  }
+}

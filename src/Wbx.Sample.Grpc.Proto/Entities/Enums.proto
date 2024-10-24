@@ -1,0 +1,8 @@
+﻿syntax = "proto3";
+ 
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Wbx.Sample.Grpc.Proto.Entities";
+ 
+package Entities;
+

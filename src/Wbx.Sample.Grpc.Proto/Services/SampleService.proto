@@ -1,0 +1,97 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "Services/EditResponse.proto"; 
+import "Entities/Sample.proto"; 
+ 
+option csharp_namespace = "Wbx.Sample.Grpc.Proto.Services";
+
+package Services;
+
+service SampleService {
+	rpc StartProcessTask(StartProcessTaskRequest) returns (StartProcessTaskResponse);
+	rpc StopProcessTask(StopProcessTaskRequest) returns (StopProcessTaskResponse);
+	
+	///ручная обработка задачей 1 item данных
+	rpc ProcessTaskItem (ProcessTaskItemRequest) returns (ProcessTaskItemResponse){
+	option (google.api.http) = {	
+      get: "/v1/ProcessTaskList"
+    };	
+	};
+
+	//crud и select объектов и коллекций
+	rpc AddSample(AddSampleRequest) returns (EditResponse);
+	rpc DeleteSample(DeleteSampleRequest) returns (EditResponse);
+	rpc UpdateSample(UpdateSampleRequest) returns (EditResponse);
+	rpc GetSampleById(GetSampleByIdRequest) returns (GetSampleByIdResponse);
+	rpc GetSamplesByParams(GetSamplesByParamsRequest) returns (GetSampleByParamsResponse);
+}
+
+message ProcessTaskItemRequest
+{
+}
+
+message StartProcessTaskRequest
+{
+	 bool now = 1;
+     google.protobuf.Timestamp date = 2;
+     google.protobuf.Timestamp after_interval = 3;
+}
+
+message StopProcessTaskRequest
+{
+	bool now = 1;
+     google.protobuf.Timestamp date = 2;
+     google.protobuf.Timestamp after_interval = 3;
+}
+
+message StartProcessTaskResponse
+{
+}
+
+message StopProcessTaskResponse
+{
+}
+
+message ProcessTaskItemResponse
+{
+}
+
+message AddSampleRequest
+{
+	string name = 1;
+}
+
+message DeleteSampleRequest
+{
+	string id = 1;
+}
+
+message UpdateSampleRequest
+{
+	string id = 1;
+	string name = 2;
+}
+
+message GetSampleByIdRequest
+{
+	string id = 1;
+}
+
+message GetSampleByIdResponse
+{
+	Entities.Sample result = 1;
+}
+
+message GetSamplesByParamsRequest
+{
+	repeated string id = 1;
+	repeated string name = 2; 
+}
+
+message GetSampleByParamsResponse
+{
+	repeated Entities.Sample result = 1;
+}

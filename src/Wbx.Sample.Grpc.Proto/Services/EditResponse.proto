@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Wbx.Sample.Grpc.Proto.Services";
+
+package Services;
+
+
+message EditResponse
+{
+	bool is_success = 1;
+	string id = 2;
+}
+

@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+ 
+option csharp_namespace = "Wbx.Sample.Grpc.Proto.Entities";
+ 
+package Entities;
+
+message Sample {
+	string id = 1;
+	string name = 2;
+}
